@@ -1,13 +1,14 @@
 from textnode import TextNode, TextType
+from htmlnode import HTMLNode
+from leafnode import LeafNode
 
 def main()-> None:
-    node1 = TextNode('unknow string by me', TextType.BOLD_TEXT, 'http/nonsense')
-    node2 = TextNode('unknow string by me', TextType.BOLD_TEXT, 'http/nonsense')
-    node3 = TextNode('unknow string by me', TextType.TEXT, 'http/nonsense')
-    print(node1 == node2)
-    print(node1 == node3)
-    print(node1)
-    print(node3)
+    node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
+    string_node = node.to_html()
+    string_result = '<a href="https://www.google.com">Click me!</a>'
+    print(string_node)
+    
+
 main()
 
 
