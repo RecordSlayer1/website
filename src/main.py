@@ -1,13 +1,15 @@
 from textnode import TextNode, TextType
 from htmlnode import HTMLNode
 from leafnode import LeafNode
+from parentnode import ParentNode
+
 
 def main()-> None:
-    node = LeafNode("a", "Click me!", {"href": "https://www.google.com"})
-    string_node = node.to_html()
-    string_result = '<a href="https://www.google.com">Click me!</a>'
-    print(string_node)
-    
+    child_node1 = LeafNode('h1', 'child_node1', {'child_node1': 'props'})
+    child_node2 = LeafNode('h2', 'child_node2', {'child_node2': 'props', 'child_node2': 'props2'})
+    parent_node1 = ParentNode('div', [child_node1, child_node2])
+    parent_node2 = ParentNode('span', [parent_node1], {'parent_node2': 'props'})
+    print(parent_node2.to_html())
 
 main()
 
