@@ -2,15 +2,11 @@ from textnode import TextNode, TextType
 from htmlnode import HTMLNode
 from leafnode import LeafNode
 from parentnode import ParentNode
-
+from splitnodes import split_nodes_image
 
 def main()-> None:
-    child_node1 = LeafNode('h1', 'child_node1', {'child_node1': 'props'})
-    child_node2 = LeafNode('h2', 'child_node2', {'child_node2': 'props', 'child_node2': 'props2'})
-    parent_node1 = ParentNode('div', [child_node1, child_node2])
-    parent_node2 = ParentNode('span', [parent_node1], {'parent_node2': 'props'})
-    print(parent_node2.to_html())
-
+    node = TextNode("This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)", TextType.TEXT)
+    print(split_nodes_image([node]))
 main()
 
 
