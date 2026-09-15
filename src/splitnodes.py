@@ -53,6 +53,7 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
         list_of_markdown_images = extract_markdown_images(old_node.text)
         if len(list_of_markdown_images) == 0:
             new_nodes.append(old_node)
+            continue
 
         for mardown_image in list_of_markdown_images:
             image_alt, image_url = mardown_image
@@ -78,6 +79,7 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
         list_of_markdown_links = extract_markdown_links(text)
         if len(list_of_markdown_links) == 0:
             new_nodes.append(old_node)
+            continue
 
         for mardown_link in list_of_markdown_links:
             link_anker, link_url = mardown_link
@@ -91,4 +93,15 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
         if text != "":
             new_nodes.append(TextNode(text, TextType.TEXT))  
     return new_nodes
+
+
+def text_to_textnodes(text: str)-> list[TextNode]:
+    node = [TextNode(text, TextType.TEXT)]
+    bold = split_nodes_delimiter(node, '**', TextType.BOLD)
+    italic = split_nodes_delimiter(bold, '_', TextType.ITALIC)
+    code = split_nodes_delimiter(italic, '`', TextType.CODE)
+    image = split_nodes_image(code)
+    link = split_nodes_link(image)
+    return link
+
 
