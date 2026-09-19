@@ -13,7 +13,7 @@ class ParentNode(HTMLNode):
         if self.tag is None:
             raise ValueError('Invalid HTML: missing tag')
         if self.children is None:
-            raise ValueError('Invalid HTML: miissing children')
+            raise ValueError('Invalid HTML: missing children')
         children_node = ''
         for child in self.children:
             children_node += child.to_html()

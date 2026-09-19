@@ -45,7 +45,7 @@ class TestHtmlNode(unittest.TestCase):
             'some command': 'some value'
         }
         node = HTMLNode("text", "value", props=random_dict)
-        string = "HtmlNode(text, value, children: None, " + "{" + "'some command'" + ": " + "'some value'" + "}"
+        string = "HtmlNode(text, value, children: None, " + "{" + "'some command'" + ": " + "'some value'" + "})"
         self.assertEqual(string, str(node))
 
         
